@@ -1,0 +1,11 @@
+body {
+  scroll-behavior: smooth;
+}
+
+.card-title {
+  color: #198754;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

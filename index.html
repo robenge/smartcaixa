@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartCaixa</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      scroll-behavior: smooth;
+    }
+    .card-title {
+      color: #198754;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Cabeçalho -->
+<header class="bg-dark text-white text-center py-5">
+  <div class="container">
+    <img src="img/logo.png" alt="Logo SmartCaixa" width="120" class="mb-3">
+    <h1 class="display-4">SmartCaixa</h1>
+    <p class="lead">Controle total do seu caixa, na palma da mão.</p>
+    <a href="#recursos" class="btn btn-success mt-3">Saiba Mais</a>
+    <button id="toggle-theme" class="btn btn-outline-light mt-3 ms-2">Alternar Tema</button>
+  </div>
+</header>
+
+<!-- Sobre -->
+<section class="py-5 bg-light text-center" data-aos="fade-up">
+  <div class="container">
+    <h2 class="mb-4">Sobre o sistema</h2>
+    <p>
+      O <strong>SmartCaixa</strong> é um sistema moderno e intuitivo para controle de caixa, ideal para pequenos e médios negócios que precisam de praticidade e eficiência no dia a dia.
+    </p>
+  </div>
+</section>
+
+<!-- Recursos -->
+<section id="recursos" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5" data-aos="fade-up">Principais Recursos</h2>
+    <div class="row text-center">
+      <div class="col-md-4 mb-4" data-aos="fade-right">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <i class="fas fa-cash-register fa-2x mb-3 text-success"></i>
+            <h5 class="card-title">Controle de Caixa</h5>
+            <p class="card-text">Monitore entradas e saídas em tempo real com clareza e agilidade.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4" data-aos="zoom-in">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <i class="fas fa-chart-line fa-2x mb-3 text-success"></i>
+            <h5 class="card-title">Relatórios Inteligentes</h5>
+            <p class="card-text">Acompanhe gráficos e indicadores personalizados de desempenho financeiro.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4" data-aos="fade-left">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <i class="fas fa-lock fa-2x mb-3 text-success"></i>
+            <h5 class="card-title">Segurança Total</h5>
+            <p class="card-text">Backup automático e proteção criptografada para seus dados.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Login Demo -->
+<section class="py-5 bg-light" id="login">
+  <div class="container" data-aos="fade-up">
+    <h2 class="text-center mb-4">Acessar Demo</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form class="card p-4 shadow" onsubmit="return validarLogin(event)">
+          <div class="mb-3">
+            <label for="usuario" class="form-label">Usuário</label>
+            <input type="text" class="form-control" id="usuario" required placeholder="ex: admin">
+          </div>
+          <div class="mb-3">
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="senha" required placeholder="••••••••">
+          </div>
+          <button type="submit" class="btn btn-success w-100">Entrar na Demo</button>
+          <div id="mensagemLogin" class="mt-3 text-center"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Download -->
+<section class="py-5 text-center">
+  <div class="container" data-aos="zoom-in">
+    <h2 class="mb-3">Baixe agora o SmartCaixa</h2>
+    <a href="programa/smartcaixa.exe" class="btn btn-success btn-lg">
+      <i class="fas fa-download me-2"></i> Download para Windows
+    </a>
+  </div>
+</section>
+
+<!-- Rodapé -->
+<footer class="bg-dark text-white text-center py-4">
+  <p>&copy; 2025 SmartCaixa. Todos os direitos reservados.</p>
+  <a href="#topo" class="text-light">Voltar ao topo</a>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+
+  function validarLogin(e) {
+    e.preventDefault();
+    const usuario = document.getElementById('usuario').value;
+    const senha = document.getElementById('senha').value;
+    const mensagem = document.getElementById('mensagemLogin');
+
+    if (usuario === "admin" && senha === "1234") {
+      mensagem.innerHTML = '<div class="text-success">Login bem-sucedido! Redirecionando...</div>';
+      setTimeout(() => {
+        window.location.href = "dashboard.html"; // coloque a URL real aqui
+      }, 1500);
+    } else {
+      mensagem.innerHTML = '<div class="text-danger">Usuário ou senha inválidos.</div>';
+    }
+    return false;
+  }
+
+  // Alternar Tema
+  const toggleBtn = document.getElementById('toggle-theme');
+  toggleBtn.addEventListener('click', () => {
+    const html = document.documentElement;
+    const atual = html.getAttribute('data-bs-theme');
+    html.setAttribute('data-bs-theme', atual === 'dark' ? 'light' : 'dark');
+  });
+</script>
+</body>
+</html>
